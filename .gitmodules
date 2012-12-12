@@ -1,3 +1,6 @@
 [submodule "MailCore"]
 	path = MailCore
-	url = https://github.com/abbood/MailCore.git
+	url = https://abbood@github.com/abbood/MailCore.git
+[submodule "three20"]
+	path = three20
+	url = https://github.com/abbood/three20.git
