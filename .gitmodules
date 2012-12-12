@@ -1,0 +1,3 @@
+[submodule "MailCore"]
+	path = MailCore
+	url = https://github.com/abbood/MailCore.git
