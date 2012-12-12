@@ -538,7 +538,7 @@
 		@try  {
 			messages = [[self.folder messageObjectsFromIndex:startSeq toIndex:endSeq] allObjects];
 			
-			IfTrue_RaiseException(messages == nil, CTUnknownError, NSLocalizedString(@"Empty message list",nil));						
+		//	IfTrue_RaiseException(messages == nil, CTUnknownError, NSLocalizedString(@"Empty message list",nil));
 		} @catch (NSException *exp) {
 			if(![sm serverReachable:self.accountNum]) {
 				[sm syncAborted:NSLocalizedString(@"Connection to server lost",nil) detail:[ImapFolderWorker decodeError:exp] accountNum:self.accountNum folderNum:self.folderNum startSeq:start];
@@ -652,7 +652,7 @@
 				
 				// fetch bodies here
 				int err = [msg fetchBodyStructure];
-				IfTrue_RaiseException(err != 0, CTUnknownError, [NSString stringWithFormat:@"Error number: %i", err]); 
+			//	IfTrue_RaiseException(err != 0, CTUnknownError, [NSString stringWithFormat:@"Error number: %i", err]);
 				
 				body = msg.body;
 

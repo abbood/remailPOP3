@@ -53,7 +53,7 @@
     }
     
     // log in
-    CTCoreAccount* account = [[CTCoreAccount alloc] init];
+    CTCorePop3Account* account = [[CTCorePop3Account alloc] init];
     
     @try {
         @try   {
@@ -87,13 +87,13 @@
         // get list of all folders
         NSSet* folders;
         @try {
-            folders = [account allFolders];
+            [account allFolders];
         } @catch (NSException *exp) {
             NSLog(@"Error getting folders: %@", exp);
             [sm syncAborted:[NSString stringWithFormat:NSLocalizedString(@"List folders: %@", nil), [ImapFolderWorker decodeError:exp]] detail:nil];
             return;
         }
-        
+    /*
         // mark folders that were deleted on the server as deleted on the client
         int i = 0;
         while(i < [sm folderCount:self.accountNum]) {
@@ -227,7 +227,7 @@
             }
         }
         
-        [sm syncDone];
+        [sm syncDone];*/
     } @finally {
         if([AppSettings logAllServerCalls]) {
             MailCoreDisableLogging();
@@ -251,15 +251,15 @@
     }
     
     
-    NSSet* folderSet;
+   // NSSet* folderSet;
     @try {
-        folderSet = [account allFolders];
+        [account allFolders];
     } @catch (NSException *exp) {
         [account disconnect];
         [account release];
         return [NSString stringWithFormat:NSLocalizedString(@"Error getting folders: %@", nil), [ImapFolderWorker decodeError:exp]];
     }
-    
+    /*
     NSString* folderName = nil;
     NSEnumerator *folderEnumError = [folderSet objectEnumerator];
     NSMutableArray *gmailFolders = [NSMutableArray arrayWithCapacity:10];
@@ -289,6 +289,7 @@
     [account disconnect];
     [account release];
     return @"OK";
+     */
 }
 
 @end
